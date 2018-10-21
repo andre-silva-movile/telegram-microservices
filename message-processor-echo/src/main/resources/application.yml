@@ -1,0 +1,23 @@
+consumers:
+    size: 1
+
+redis:
+    host: localhost
+    port: 6379
+    max-clients: 5
+    queue:
+        processor-echo: message-processor-echo
+        dispatcher: message-dispatcher
+
+---
+
+spring:
+    profiles: docker
+
+redis:
+    host: redis
+
+---
+
+spring:
+    profiles: docker-prod

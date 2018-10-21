@@ -1,0 +1,9 @@
+rootProject.name = 'telegram-microservice'
+include 'message-api'
+include 'message-router'
+include 'message-core'
+include 'message-dispatcher'
+include 'message-processor-echo'
+include 'message-processor-joke'
+include 'message-processor-reverse'
+

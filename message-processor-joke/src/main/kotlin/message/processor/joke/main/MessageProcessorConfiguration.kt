@@ -1,0 +1,10 @@
+package message.processor.joke.main
+
+import message.core.queue.MessageDispatcherQueueConfiguration
+import message.core.queue.MessageJokeProcessorQueueConfiguration
+import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Import
+
+@Configuration
+@Import(MessageDispatcherQueueConfiguration::class, MessageJokeProcessorQueueConfiguration::class)
+class MessageProcessorConfiguration

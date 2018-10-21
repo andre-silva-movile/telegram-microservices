@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-api/message-api.iml" filepath="$PROJECT_DIR$/.idea/modules/message-api/message-api.iml" group="message-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-api/message-api_main.iml" filepath="$PROJECT_DIR$/.idea/modules/message-api/message-api_main.iml" group="message-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-api/message-api_test.iml" filepath="$PROJECT_DIR$/.idea/modules/message-api/message-api_test.iml" group="message-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-core/message-core.iml" filepath="$PROJECT_DIR$/.idea/modules/message-core/message-core.iml" group="message-core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-core/message-core_main.iml" filepath="$PROJECT_DIR$/.idea/modules/message-core/message-core_main.iml" group="message-core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-core/message-core_test.iml" filepath="$PROJECT_DIR$/.idea/modules/message-core/message-core_test.iml" group="message-core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-dispatcher/message-dispatcher.iml" filepath="$PROJECT_DIR$/.idea/modules/message-dispatcher/message-dispatcher.iml" group="message-dispatcher" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-dispatcher/message-dispatcher_main.iml" filepath="$PROJECT_DIR$/.idea/modules/message-dispatcher/message-dispatcher_main.iml" group="message-dispatcher" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-dispatcher/message-dispatcher_test.iml" filepath="$PROJECT_DIR$/.idea/modules/message-dispatcher/message-dispatcher_test.iml" group="message-dispatcher" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-processor-echo.iml" filepath="$PROJECT_DIR$/.idea/modules/message-processor-echo.iml" group="message-processor-echo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-processor-echo/message-processor-echo_main.iml" filepath="$PROJECT_DIR$/.idea/modules/message-processor-echo/message-processor-echo_main.iml" group="message-processor-echo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-processor-echo/message-processor-echo_test.iml" filepath="$PROJECT_DIR$/.idea/modules/message-processor-echo/message-processor-echo_test.iml" group="message-processor-echo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-processor-joke/message-processor-joke.iml" filepath="$PROJECT_DIR$/.idea/modules/message-processor-joke/message-processor-joke.iml" group="message-processor-joke" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-processor-joke/message-processor-joke_main.iml" filepath="$PROJECT_DIR$/.idea/modules/message-processor-joke/message-processor-joke_main.iml" group="message-processor-joke" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-processor-joke/message-processor-joke_test.iml" filepath="$PROJECT_DIR$/.idea/modules/message-processor-joke/message-processor-joke_test.iml" group="message-processor-joke" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-processor-reverse.iml" filepath="$PROJECT_DIR$/.idea/modules/message-processor-reverse.iml" group="message-processor-reverse" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-processor-reverse/message-processor-reverse_main.iml" filepath="$PROJECT_DIR$/.idea/modules/message-processor-reverse/message-processor-reverse_main.iml" group="message-processor-reverse" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-processor-reverse/message-processor-reverse_test.iml" filepath="$PROJECT_DIR$/.idea/modules/message-processor-reverse/message-processor-reverse_test.iml" group="message-processor-reverse" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-router/message-router.iml" filepath="$PROJECT_DIR$/.idea/modules/message-router/message-router.iml" group="message-router" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-router/message-router_main.iml" filepath="$PROJECT_DIR$/.idea/modules/message-router/message-router_main.iml" group="message-router" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/message-router/message-router_test.iml" filepath="$PROJECT_DIR$/.idea/modules/message-router/message-router_test.iml" group="message-router" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/telegram-microservice.iml" filepath="$PROJECT_DIR$/.idea/modules/telegram-microservice.iml" />
+    </modules>
+  </component>
+</project>

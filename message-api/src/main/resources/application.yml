@@ -1,0 +1,14 @@
+redis:
+    host: localhost
+    port: 6379
+    max-clients: 5
+    queue:
+        router: message-router
+
+---
+
+spring:
+    profiles: docker
+
+redis:
+    host: redis

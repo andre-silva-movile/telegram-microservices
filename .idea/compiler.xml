@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="message-api_main" target="1.8" />
+      <module name="message-api_test" target="1.8" />
+      <module name="message-core_main" target="1.8" />
+      <module name="message-core_test" target="1.8" />
+      <module name="message-dispatcher_main" target="1.8" />
+      <module name="message-dispatcher_test" target="1.8" />
+      <module name="message-guide_main" target="1.8" />
+      <module name="message-guide_test" target="1.8" />
+      <module name="message-processor-echo_main" target="1.8" />
+      <module name="message-processor-echo_test" target="1.8" />
+      <module name="message-processor-joke_main" target="1.8" />
+      <module name="message-processor-joke_test" target="1.8" />
+      <module name="message-processor-reverse_main" target="1.8" />
+      <module name="message-processor-reverse_test" target="1.8" />
+      <module name="message-router_main" target="1.8" />
+      <module name="message-router_test" target="1.8" />
+      <module name="telegram-microservice_main" target="1.8" />
+      <module name="telegram-microservice_test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

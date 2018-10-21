@@ -1,0 +1,10 @@
+package message.processor.echo.main
+
+import message.core.queue.MessageDispatcherQueueConfiguration
+import message.core.queue.MessageEchoProcessorQueueConfiguration
+import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Import
+
+@Configuration
+@Import(MessageDispatcherQueueConfiguration::class, MessageEchoProcessorQueueConfiguration::class)
+class MessageProcessorConfiguration

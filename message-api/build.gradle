@@ -1,0 +1,8 @@
+dependencies {
+
+    compile project(":message-core")
+
+    compile "org.springframework.boot:spring-boot-starter-web:"
+
+}
+
