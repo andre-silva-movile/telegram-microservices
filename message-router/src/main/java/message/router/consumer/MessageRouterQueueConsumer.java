@@ -29,7 +29,7 @@ public class MessageRouterQueueConsumer extends RedisQueueConsumer<MessageWrappe
             throw new IllegalStateException("Unable to route message without bot configuration");
         }
         Log.application.info("Routing message to {}", bot.getProcessor());
-        messageWrapperQueueMap.get("processor-echo").push(messageWrapper);
+        messageWrapperQueueMap.get(bot.getProcessor()).push(messageWrapper);
     }
 
 }
