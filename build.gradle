@@ -1,13 +1,15 @@
 group 'telegram-microservice'
 
 def modulesJava = ['message-router', 'message-processor-reverse', 'message-api', 'message-core']
-def modulesKotlin = ['message-dispatcher', 'message-api', 'message-dispatcher', 'message-processor-echo', 'message-processor-joke']
+def modulesKotlin = ['message-api', 'message-dispatcher', 'message-processor-echo', 'message-processor-joke']
 
 buildscript {
     ext.kotlin_version = '1.1.3' // Required for Kotlin integration
     ext.spring_boot_version = '1.5.4.RELEASE'
     ext.spring_web_version = "2.0.6.RELEASE"
     ext.jib_version = "0.9.13"
+    ext.jacocoVersion = "0.8.2"
+    ext.'groovy.version' = '2.5.2'
 
     repositories {
         jcenter()
@@ -16,9 +18,8 @@ buildscript {
         }
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Required for Kotlin integration
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version"
-        // See https://kotlinlang.org/docs/reference/compiler-plugins.html#kotlin-spring-compiler-plugin
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version"
         classpath "gradle.plugin.com.google.cloud.tools:jib-gradle-plugin:$jib_version"
     }
@@ -64,18 +65,31 @@ configure(subprojects.findAll { modulesKotlin.contains(it.name) }) {
 
 }
 
-// -- Image applications
-configure(subprojects.findAll {
-    modulesKotlin.contains(it.name) ||
-            modulesJava.contains(it.name)
-}) {
+// -- Extras configurations
+configure(subprojects.findAll()) {
 
+    // Jib
     apply plugin: "com.google.cloud.tools.jib"
-
     jib.allowInsecureRegistries = false
     jib.from.image = "openjdk:11-jre-slim"
     jib.container.useCurrentTimestamp = true
     jib.container.jvmFlags = ["-Dspring.profiles.active=docker"]
 
+    //Jacoco
+    apply plugin: "jacoco"
+    jacocoTestReport.reports.html.enabled = true
+    jacocoTestReport.reports.xml.enabled = true
+    jacocoTestReport.reports.csv.enabled = true
+    test.finalizedBy jacocoTestReport
+
+    //Spock and Groovy
+    apply plugin: 'groovy'
+    dependencies {
+        testCompile "org.codehaus.groovy:groovy-all:2.5.2"
+        testCompile "org.spockframework:spock-core:1.2-groovy-2.5"
+        testCompile "org.spockframework:spock-spring:1.2-groovy-2.5"
+    }
+
 }
+
 

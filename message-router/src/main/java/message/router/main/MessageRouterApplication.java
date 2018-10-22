@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan("message.router")
-public class MessageRouterApplication {
+public class  MessageRouterApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(MessageRouterApplication.class).run(args);

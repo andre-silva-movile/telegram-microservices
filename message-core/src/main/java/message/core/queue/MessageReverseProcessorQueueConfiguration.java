@@ -18,6 +18,6 @@ public class MessageReverseProcessorQueueConfiguration {
     @Bean("processor-reverse")
     @Autowired
     public MessageWrapperQueue messageReverseProcessorQueue(JedisPool redisPool) {
-        return new MessageWrapperQueue(redisPool, GsonMapper.DEFAULT, name);
+        return new MessageWrapperQueue(redisPool.getResource(), GsonMapper.DEFAULT, name);
     }
 }

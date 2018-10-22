@@ -1,5 +1,6 @@
 package message.processor.joke.processor
 
+import message.core.log.Log
 import message.core.mapper.GsonMapper
 import message.core.wrapper.MessageWrapperQueue
 import message.processor.joke.components.JokeService
@@ -21,6 +22,8 @@ constructor(@Qualifier("processor-joke") messageJokeProcessorQueue: MessageWrapp
     private val executorService: ExecutorService
 
     init {
+        Log.application.info("Creating {} consumers to process joke", consumerSize)
+
         val executorService = Executors.newFixedThreadPool(consumerSize!!)
         val jokeService = JokeService(HttpClients.createDefault(), GsonMapper.DEFAULT)
         for (i in 0 until consumerSize) {

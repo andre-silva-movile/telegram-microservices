@@ -18,7 +18,7 @@ public class MessageEchoProcessorQueueConfiguration {
     @Bean("processor-echo")
     @Autowired
     public MessageWrapperQueue messageEchoProcessorQueue(JedisPool redisPool) {
-        return new MessageWrapperQueue(redisPool, GsonMapper.DEFAULT, name);
+        return new MessageWrapperQueue(redisPool.getResource(), GsonMapper.DEFAULT, name);
     }
 
 }

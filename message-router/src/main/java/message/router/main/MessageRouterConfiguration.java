@@ -1,5 +1,6 @@
 package message.router.main;
 
+import message.core.bot.BotConfiguration;
 import message.core.queue.MessageEchoProcessorQueueConfiguration;
 import message.core.queue.MessageJokeProcessorQueueConfiguration;
 import message.core.queue.MessageReverseProcessorQueueConfiguration;
@@ -9,7 +10,8 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @Import({MessageRouterQueueConfiguration.class, MessageEchoProcessorQueueConfiguration.class,
-        MessageJokeProcessorQueueConfiguration.class, MessageReverseProcessorQueueConfiguration.class})
+        MessageJokeProcessorQueueConfiguration.class, MessageReverseProcessorQueueConfiguration.class,
+        BotConfiguration.class})
 public class MessageRouterConfiguration {
 
 }

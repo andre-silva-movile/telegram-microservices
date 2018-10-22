@@ -10,7 +10,7 @@ import java.util.List;
 public class MessageWrapper implements Serializable {
 
     private static final long serialVersionUID = 7764295023112623709L;
-    private Long bot;
+    private String bot;
     private Integer updateId;
     private Message message;
     private List<String> response;
@@ -19,11 +19,11 @@ public class MessageWrapper implements Serializable {
         return new Builder();
     }
 
-    public Long getBot() {
+    public String getBot() {
         return bot;
     }
 
-    public void setBot(Long bot) {
+    public void setBot(String bot) {
         this.bot = bot;
     }
 
@@ -69,7 +69,7 @@ public class MessageWrapper implements Serializable {
 
     public static class Builder {
 
-        private Long bot;
+        private String bot;
         private Integer updateId;
         private Message message;
         private List<String> response;
@@ -84,7 +84,7 @@ public class MessageWrapper implements Serializable {
         }
 
 
-        public Builder setBot(Long bot) {
+        public Builder setBot(String bot) {
             this.bot = bot;
             return this;
         }

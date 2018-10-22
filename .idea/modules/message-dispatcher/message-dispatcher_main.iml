@@ -38,6 +38,7 @@
     <exclude-output />
     <option name="createStubs" value="true" />
     <content url="file://$MODULE_DIR$/../../../message-dispatcher/src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../../message-dispatcher/src/main/groovy" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../message-dispatcher/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../message-dispatcher/src/main/kotlin" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../message-dispatcher/src/main/resources" type="java-resource" />

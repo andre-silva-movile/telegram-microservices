@@ -1,6 +1,7 @@
 package message.api.controller
 
 import message.api.processor.RequestProcessor
+import message.core.log.Log
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
@@ -15,8 +16,8 @@ class MessageController {
     private val requestProcessor: RequestProcessor? = null
 
     @PostMapping(value = "/telegram/{bot-id}")
-    fun process(@PathVariable("bot-id") bot: Long?, @RequestBody body: String): ResponseEntity<String> {
-
+    fun process(@PathVariable("bot-id") bot: String?, @RequestBody body: String): ResponseEntity<String> {
+        Log.application.info("New bot request from bot {} with body {}", bot, body)
         requestProcessor?.process(bot, body)
         return ResponseEntity.ok().build()
     }

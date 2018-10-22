@@ -1,5 +1,7 @@
 package message.router.consumer;
 
+import message.core.bot.BotService;
+import message.core.log.Log;
 import message.core.wrapper.MessageWrapperQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,16 +22,12 @@ public class MessageRouterExecutorService {
     @Autowired
     public MessageRouterExecutorService(ApplicationContext applicationContext,
                                         MessageWrapperQueue messageRouterQueue,
-                                        @Value("${consumers.size:1}") Integer consumerSize,
-                                        @Value("#{bots.processors}") Map<Long, String> configuration) {
-
-        Map<Long, MessageWrapperQueue> queues = configuration.entrySet().stream().collect(Collectors.toMap(
-                e -> e.getKey(), e -> (MessageWrapperQueue) applicationContext.getBean(e.getValue())
-        ));
-
+                                        BotService botService,
+                                        @Value("${consumers.size:1}") Integer consumerSize) {
+        Log.application.info("Creating {} consumers to dispatch messages", consumerSize);
         ExecutorService executorService = Executors.newFixedThreadPool(consumerSize);
         for (int i = 0; i < consumerSize; i++) {
-            MessageRouterQueueConsumer processor = new MessageRouterQueueConsumer(messageRouterQueue, queues);
+            MessageRouterQueueConsumer processor = new MessageRouterQueueConsumer(applicationContext, messageRouterQueue, botService);
             executorService.submit(processor);
         }
         this.executorService = executorService;

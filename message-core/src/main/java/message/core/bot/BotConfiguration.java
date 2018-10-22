@@ -1,8 +1,7 @@
-package message.core.queue;
+package message.core.bot;
 
 import message.core.mapper.GsonMapper;
 import message.core.redis.RedisConfiguration;
-import message.core.wrapper.MessageWrapperQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -10,14 +9,20 @@ import org.springframework.context.annotation.Import;
 import redis.clients.jedis.JedisPool;
 
 @Import({RedisConfiguration.class})
-public class MessageDispatcherQueueConfiguration {
+public class BotConfiguration {
 
-    @Value("${redis.queue.dispatcher}")
-    private String name;
+    @Value("${redis.collection.bot}")
+    private String collection;
 
     @Bean
     @Autowired
-    public MessageWrapperQueue messageDispatcherQueue(JedisPool redisPool) {
-        return new MessageWrapperQueue(redisPool.getResource(), GsonMapper.DEFAULT, name);
+    public BotService botService(BotRepository botRepository) {
+        return new BotService(botRepository);
+    }
+
+    @Bean
+    @Autowired
+    public BotRepository botRepository(JedisPool redisPool){
+        return new BotRepository(redisPool.getResource(), GsonMapper.DEFAULT, collection);
     }
 }

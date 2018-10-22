@@ -9,12 +9,12 @@ import java.lang.reflect.ParameterizedType;
 
 public abstract class RedisQueue<T extends Serializable> {
 
-    private final Jedis jedis;
-    private final String queue;
-    private final Mapper mapper;
+    protected final Jedis jedis;
+    protected final String queue;
+    protected final Mapper mapper;
 
-    public RedisQueue(JedisPool redisPool, Mapper mapper, String queue) {
-        this.jedis = redisPool.getResource();
+    public RedisQueue(Jedis jedis, Mapper mapper, String queue) {
+        this.jedis = jedis;
         this.queue = queue;
         this.mapper = mapper;
     }

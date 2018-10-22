@@ -1,5 +1,6 @@
 package message.processor.echo.processor
 
+import message.core.log.Log
 import message.core.wrapper.MessageWrapperQueue
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
@@ -18,6 +19,7 @@ constructor(@Qualifier("processor-echo") messageEchoProcessorQueue: MessageWrapp
     private val executorService: ExecutorService
 
     init {
+        Log.application.info("Creating {} consumers to process echo", consumerSize)
         val executorService = Executors.newFixedThreadPool(consumerSize!!)
         for (i in 0 until consumerSize) {
             val processor = MessageProcessorQueueConsumer(messageEchoProcessorQueue, messageDispatcherQueue)

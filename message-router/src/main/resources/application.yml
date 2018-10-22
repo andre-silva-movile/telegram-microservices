@@ -5,16 +5,13 @@ redis:
     host: localhost
     port: 6379
     max-clients: 5
+    collection:
+        bot: bot
     queue:
         router: message-router
         processor-echo: message-processor-echo
         processor-joke: message-processor-joke
         processor-reverse: message-processor-reverse
-
-bots:
-  processors:
-      1: processor-joke
-
 
 ---
 

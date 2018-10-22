@@ -1,5 +1,6 @@
 package message.processor.joke.processor
 
+import message.core.log.Log
 import message.core.redis.RedisQueue
 import message.core.redis.RedisQueueConsumer
 import message.core.wrapper.MessageWrapper
@@ -11,6 +12,7 @@ class MessageProcessorQueueConsumer(messageJokeProcessorQueue: RedisQueue<Messag
         RedisQueueConsumer<MessageWrapper>(messageJokeProcessorQueue) {
 
     override fun process(messageWrapper: MessageWrapper) {
+        Log.application.info("Process joke message {}", messageWrapper.message.text)
         val joke = jokeService.get()
         messageWrapper.addResponse(joke?.question)
         messageWrapper.addResponse(joke?.answer)

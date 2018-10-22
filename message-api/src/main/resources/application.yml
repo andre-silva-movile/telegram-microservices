@@ -2,6 +2,8 @@ redis:
     host: localhost
     port: 6379
     max-clients: 5
+    collection:
+        bot: bot
     queue:
         router: message-router
 

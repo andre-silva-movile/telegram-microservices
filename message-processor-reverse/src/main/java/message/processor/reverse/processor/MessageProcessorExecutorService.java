@@ -1,5 +1,6 @@
 package message.processor.reverse.processor;
 
+import message.core.log.Log;
 import message.core.wrapper.MessageWrapperQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,7 +20,7 @@ public class MessageProcessorExecutorService {
     public MessageProcessorExecutorService(@Qualifier("processor-reverse") MessageWrapperQueue messageProcessorQueue,
                                            MessageWrapperQueue messageDispatcherQueue,
                                            @Value("${consumers.size:1}") Integer consumerSize) {
-
+        Log.application.info("Creating {} consumers to process reverse ", consumerSize);
         ExecutorService executorService = Executors.newFixedThreadPool(consumerSize);
         for (int i = 0; i < consumerSize; i++) {
             MessageProcessorQueueConsumer processor = new MessageProcessorQueueConsumer(messageProcessorQueue, messageDispatcherQueue);
