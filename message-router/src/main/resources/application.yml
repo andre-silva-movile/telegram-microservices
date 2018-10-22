@@ -4,7 +4,7 @@ consumers:
 redis:
     host: localhost
     port: 6379
-    max-clients: 5
+    max-clients: 10
     collection:
         bot: bot
     queue:
@@ -12,6 +12,12 @@ redis:
         processor-echo: message-processor-echo
         processor-joke: message-processor-joke
         processor-reverse: message-processor-reverse
+
+processors:
+    queue:
+     - processor-echo
+     - processor-joke
+     - processor-reverse
 
 ---
 

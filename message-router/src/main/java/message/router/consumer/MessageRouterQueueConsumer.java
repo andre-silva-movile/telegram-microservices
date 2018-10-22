@@ -6,16 +6,18 @@ import message.core.log.Log;
 import message.core.redis.RedisQueue;
 import message.core.redis.RedisQueueConsumer;
 import message.core.wrapper.MessageWrapper;
-import org.springframework.context.ApplicationContext;
+import message.core.wrapper.MessageWrapperQueue;
+
+import java.util.Map;
 
 public class MessageRouterQueueConsumer extends RedisQueueConsumer<MessageWrapper> {
 
-    private final ApplicationContext applicationContext;
     private final BotService botService;
+    private Map<String, MessageWrapperQueue> messageWrapperQueueMap;
 
-    public MessageRouterQueueConsumer(ApplicationContext applicationContext, RedisQueue<MessageWrapper> messageRouterQueue, BotService botService) {
+    public MessageRouterQueueConsumer(Map<String, MessageWrapperQueue> messageWrapperQueueMap, RedisQueue<MessageWrapper> messageRouterQueue, BotService botService) {
         super(messageRouterQueue);
-        this.applicationContext = applicationContext;
+        this.messageWrapperQueueMap = messageWrapperQueueMap;
         this.botService = botService;
     }
 
@@ -27,8 +29,7 @@ public class MessageRouterQueueConsumer extends RedisQueueConsumer<MessageWrappe
             throw new IllegalStateException("Unable to route message without bot configuration");
         }
         Log.application.info("Routing message to {}", bot.getProcessor());
-        ((RedisQueue<MessageWrapper>) applicationContext.getBean(bot.getProcessor())).push(messageWrapper);
+        messageWrapperQueueMap.get(bot.getProcessor()).push(messageWrapper);
     }
 
 }
-

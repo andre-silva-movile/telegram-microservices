@@ -17,7 +17,7 @@ class RequestProcessor(
     fun process(id: String?, body: String?) {
         body?.let {
             val update = GsonMapper.SNACK_CASE.deserialize(body, Update::class.java)
-            if(botService.get(id) == null){
+            if (botService.get(id) == null) {
                 throw IllegalStateException("Unable to process message without bot entity")
             }
             val messageWrapper = MessageWrapper.builder().setMessage(update.message).setBot(id).setUpdateId(update.updateId).build()

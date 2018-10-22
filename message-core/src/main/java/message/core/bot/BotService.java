@@ -11,7 +11,7 @@ public class BotService {
     }
 
     public Bot get(String botId) {
-        if(StringUtils.isBlank(botId)) {
+        if (StringUtils.isBlank(botId)) {
             throw new IllegalArgumentException("Unable to get bot without botId");
         }
         return botRepository.get(botId);

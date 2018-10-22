@@ -76,11 +76,11 @@ configure(subprojects.findAll()) {
     jib.container.jvmFlags = ["-Dspring.profiles.active=docker"]
 
     //Jacoco
-    apply plugin: "jacoco"
-    jacocoTestReport.reports.html.enabled = true
-    jacocoTestReport.reports.xml.enabled = true
-    jacocoTestReport.reports.csv.enabled = true
-    test.finalizedBy jacocoTestReport
+//    apply plugin: "jacoco"
+//    jacocoTestReport.reports.html.enabled = true
+//    jacocoTestReport.reports.xml.enabled = true
+//    jacocoTestReport.reports.csv.enabled = true
+//    test.finalizedBy jacocoTestReport
 
     //Spock and Groovy
     apply plugin: 'groovy'

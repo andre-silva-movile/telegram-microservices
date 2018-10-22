@@ -9,30 +9,37 @@ import java.lang.reflect.ParameterizedType;
 
 public abstract class RedisQueue<T extends Serializable> {
 
-    protected final Jedis jedis;
+    protected final JedisPool jedis;
     protected final String queue;
     protected final Mapper mapper;
 
-    public RedisQueue(Jedis jedis, Mapper mapper, String queue) {
+    public RedisQueue(JedisPool jedis, Mapper mapper, String queue) {
         this.jedis = jedis;
         this.queue = queue;
         this.mapper = mapper;
     }
 
     public long push(T object) {
+        Jedis jedisResource = jedis.getResource();
         try {
-            return jedis.lpush(queue, mapper.serialize(object));
+            long result = jedisResource.lpush(queue, mapper.serialize(object));
+            jedisResource.close();
+            return result ;
         } catch (RuntimeException e) {
+            jedisResource.close();
             return 0;
         }
     }
 
     @SuppressWarnings("unchecked")
     public T pop() {
+        Jedis jedisResource = jedis.getResource();
         try {
-            String content = jedis.lpop(queue);
+            String content = jedisResource.lpop(queue);
+            jedisResource.close();
             return mapper.deserialize(content, (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
         } catch (RuntimeException e) {
+            jedisResource.close();
             return null;
         }
     }

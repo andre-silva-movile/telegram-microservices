@@ -10,7 +10,7 @@ import message.core.wrapper.MessageWrapper
 class MessageDispatcherQueueConsumer(messageDispatcherQueue: RedisQueue<MessageWrapper>,
                                      private val botService: BotService,
                                      private val telegramService: TelegramService) :
-                                     RedisQueueConsumer<MessageWrapper>(messageDispatcherQueue) {
+        RedisQueueConsumer<MessageWrapper>(messageDispatcherQueue) {
 
     override fun process(messageWrapper: MessageWrapper) {
         val bot = botService.get(messageWrapper.bot)

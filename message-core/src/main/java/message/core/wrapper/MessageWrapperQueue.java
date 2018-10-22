@@ -7,7 +7,7 @@ import redis.clients.jedis.JedisPool;
 
 public class MessageWrapperQueue extends RedisQueue<MessageWrapper> {
 
-    public MessageWrapperQueue(Jedis jedis, Mapper mapper, String queue) {
+    public MessageWrapperQueue(JedisPool jedis, Mapper mapper, String queue) {
         super(jedis, mapper, queue);
     }
 }

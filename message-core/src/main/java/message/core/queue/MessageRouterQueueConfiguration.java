@@ -18,6 +18,6 @@ public class MessageRouterQueueConfiguration {
     @Bean
     @Autowired
     public MessageWrapperQueue messageRouterQueue(JedisPool redisPool) {
-        return new MessageWrapperQueue(redisPool.getResource(), GsonMapper.DEFAULT, name);
+        return new MessageWrapperQueue(redisPool, GsonMapper.DEFAULT, name);
     }
 }

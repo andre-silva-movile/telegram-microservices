@@ -1,5 +1,7 @@
 package message.core.redis;
 
+import message.core.log.Log;
+
 import java.io.Serializable;
 
 public abstract class RedisQueueConsumer<T extends Serializable> implements Runnable {
@@ -15,9 +17,13 @@ public abstract class RedisQueueConsumer<T extends Serializable> implements Runn
     public void run() {
         running = true;
         while (running && !Thread.currentThread().isInterrupted()) {
-            T update = queue.pop();
-            if (update != null) {
-                this.process(update);
+            try{
+                T update = queue.pop();
+                if (update != null) {
+                    this.process(update);
+                }
+            } catch (RuntimeException e){
+                Log.core.error("Unable to process pooling message", e.toString());
             }
         }
     }
