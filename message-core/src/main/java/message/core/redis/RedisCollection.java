@@ -28,6 +28,7 @@ public abstract class RedisCollection<T extends Serializable> {
             return null;
         }
     }
+
     //TODO: create set with redis directives
     public String set(String key, T object) {
         try {

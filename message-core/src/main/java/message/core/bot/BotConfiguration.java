@@ -22,7 +22,7 @@ public class BotConfiguration {
 
     @Bean
     @Autowired
-    public BotRepository botRepository(JedisPool redisPool){
+    public BotRepository botRepository(JedisPool redisPool) {
         return new BotRepository(redisPool.getResource(), GsonMapper.DEFAULT, collection);
     }
 }

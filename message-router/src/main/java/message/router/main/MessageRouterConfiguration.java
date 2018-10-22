@@ -9,9 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import({MessageRouterQueueConfiguration.class, MessageEchoProcessorQueueConfiguration.class,
-        MessageJokeProcessorQueueConfiguration.class, MessageReverseProcessorQueueConfiguration.class,
-        BotConfiguration.class})
+@Import({MessageRouterQueueConfiguration.class, MessageEchoProcessorQueueConfiguration.class, BotConfiguration.class,
+        MessageJokeProcessorQueueConfiguration.class, MessageReverseProcessorQueueConfiguration.class})
 public class MessageRouterConfiguration {
 
 }

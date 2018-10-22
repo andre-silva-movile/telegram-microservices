@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PreDestroy;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -20,16 +21,22 @@ public class MessageRouterExecutorService {
     private final ExecutorService executorService;
 
     @Autowired
-    public MessageRouterExecutorService(ApplicationContext applicationContext,
+    public MessageRouterExecutorService(BotService botService,
+                                        ApplicationContext applicationContext,
                                         MessageWrapperQueue messageRouterQueue,
-                                        BotService botService,
+                                        @Value("#{processors.queue}") List<String> processors,
                                         @Value("${consumers.size:1}") Integer consumerSize) {
-        Log.application.info("Creating {} consumers to dispatch messages", consumerSize);
+        Log.application.info("Creating {} consumers to route messages", consumerSize);
+
+        Map<String, MessageWrapperQueue> messageWrapperQueueMap = processors.stream().collect(Collectors.toMap(s -> s, s -> applicationContext.getBean(s, MessageWrapperQueue.class)));
+
         ExecutorService executorService = Executors.newFixedThreadPool(consumerSize);
         for (int i = 0; i < consumerSize; i++) {
-            MessageRouterQueueConsumer processor = new MessageRouterQueueConsumer(applicationContext, messageRouterQueue, botService);
+            MessageRouterQueueConsumer processor = new MessageRouterQueueConsumer(messageWrapperQueueMap, messageRouterQueue, botService);
             executorService.submit(processor);
         }
+        Log.application.info("created {} consumers to route messages", consumerSize);
+
         this.executorService = executorService;
     }
 
@@ -39,3 +46,5 @@ public class MessageRouterExecutorService {
     }
 
 }
+
+

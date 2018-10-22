@@ -13,6 +13,12 @@ redis:
         processor-joke: message-processor-joke
         processor-reverse: message-processor-reverse
 
+processors:
+    queue:
+     - processor-echo
+     - processor-joke
+     - processor-reverse
+
 ---
 
 spring:

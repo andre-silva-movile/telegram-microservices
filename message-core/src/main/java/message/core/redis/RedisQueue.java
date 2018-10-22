@@ -2,7 +2,6 @@ package message.core.redis;
 
 import message.core.mapper.Mapper;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
