@@ -24,7 +24,7 @@ public abstract class RedisQueue<T extends Serializable> {
         try {
             long result = jedisResource.lpush(queue, mapper.serialize(object));
             jedisResource.close();
-            return result ;
+            return result;
         } catch (RuntimeException e) {
             jedisResource.close();
             return 0;

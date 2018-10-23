@@ -134,15 +134,9 @@ chatclub-web-client/dist/
 **/chatclub-dashboard/.editorconfig
 **/*/.vscode/
 
-# logs
-*.log
-log/*.log
-log/
-
 # Ignore folders for jenkins
 caches/
 native/
-wrapper/
 deamon/
 daemon/
 notifications/

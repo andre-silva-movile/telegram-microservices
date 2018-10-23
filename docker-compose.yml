@@ -2,7 +2,6 @@ version: "3.5"
 services:
 
   redis:
-    container_name: redis
     image: redis:4.0.11
     command: ["redis-server", "--appendonly", "yes"]
     hostname: redis
@@ -10,7 +9,6 @@ services:
     - "6379:6379"
 
   message-api:
-      container_name: message-api
       image: message-api:1.0.0
       hostname: message-api
       ports:
@@ -19,7 +17,6 @@ services:
       - redis
 
   message-dispatcher:
-      container_name: message-dispatcher
       image: message-dispatcher:1.0.0
       hostname: message-dispatcher
       depends_on:
@@ -27,7 +24,6 @@ services:
       - message-api
 
   message-router:
-      container_name: message-router
       image: message-router:1.0.0
       hostname: message-router
       depends_on:
@@ -35,7 +31,6 @@ services:
       - message-api
 
   message-processor-echo:
-      container_name: message-processor-echo
       image: message-processor-echo:1.0.0
       hostname: message-processor-echo
       depends_on:
@@ -43,7 +38,6 @@ services:
       - message-router
 
   message-processor-joke:
-      container_name: message-processor-joke
       image: message-processor-joke:1.0.0
       hostname: message-processor-joke
       depends_on:
@@ -51,7 +45,6 @@ services:
       - message-router
 
   message-processor-reverse:
-      container_name: message-processor-reverse
       image: message-processor-reverse:1.0.0
       hostname: message-processor-reverse
       depends_on:

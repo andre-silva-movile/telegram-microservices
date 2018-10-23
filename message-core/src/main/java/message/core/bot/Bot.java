@@ -9,6 +9,14 @@ public class Bot implements Serializable {
     private String token;
     private String processor;
 
+    private Bot() {
+
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public String getName() {
         return name;
     }
@@ -40,5 +48,34 @@ public class Bot implements Serializable {
                 ", token='" + token + '\'' +
                 ", processor='" + processor + '\'' +
                 '}';
+    }
+
+    public static class Builder {
+        private String name;
+        private String token;
+        private String processor;
+
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setToken(String token) {
+            this.token = token;
+            return this;
+        }
+
+        public Builder setProcessor(String processor) {
+            this.processor = processor;
+            return this;
+        }
+
+        public Bot build() {
+            Bot bot = new Bot();
+            bot.setName(name);
+            bot.setProcessor(processor);
+            bot.setToken(token);
+            return bot;
+        }
     }
 }

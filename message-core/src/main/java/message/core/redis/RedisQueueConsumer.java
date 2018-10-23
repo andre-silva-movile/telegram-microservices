@@ -17,12 +17,12 @@ public abstract class RedisQueueConsumer<T extends Serializable> implements Runn
     public void run() {
         running = true;
         while (running && !Thread.currentThread().isInterrupted()) {
-            try{
+            try {
                 T update = queue.pop();
                 if (update != null) {
                     this.process(update);
                 }
-            } catch (RuntimeException e){
+            } catch (RuntimeException e) {
                 Log.core.error("Unable to process pooling message", e.toString());
             }
         }

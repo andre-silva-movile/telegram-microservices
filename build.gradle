@@ -76,18 +76,22 @@ configure(subprojects.findAll()) {
     jib.container.jvmFlags = ["-Dspring.profiles.active=docker"]
 
     //Jacoco
-//    apply plugin: "jacoco"
-//    jacocoTestReport.reports.html.enabled = true
-//    jacocoTestReport.reports.xml.enabled = true
-//    jacocoTestReport.reports.csv.enabled = true
-//    test.finalizedBy jacocoTestReport
+    apply plugin: "jacoco"
+    jacocoTestReport.reports.html.enabled = true
+    jacocoTestReport.reports.xml.enabled = true
+    jacocoTestReport.reports.csv.enabled = true
+    jacocoTestCoverageVerification.dependsOn jacocoTestReport
+//    test.dependsOn jibDockerBuild
+    test.finalizedBy jacocoTestReport
 
     //Spock and Groovy
     apply plugin: 'groovy'
     dependencies {
+        compile group: 'org.testcontainers', name: 'spock', version: '1.9.1'
         testCompile "org.codehaus.groovy:groovy-all:2.5.2"
         testCompile "org.spockframework:spock-core:1.2-groovy-2.5"
         testCompile "org.spockframework:spock-spring:1.2-groovy-2.5"
+        testCompile "org.springframework.boot:spring-boot-starter-test"
     }
 
 }

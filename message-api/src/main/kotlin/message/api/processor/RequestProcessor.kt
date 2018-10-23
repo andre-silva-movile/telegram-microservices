@@ -14,18 +14,29 @@ class RequestProcessor(
         private val botService: BotService
 ) {
 
-    fun process(id: String?, body: String?) {
-        body?.let {
-            val update = GsonMapper.SNACK_CASE.deserialize(body, Update::class.java)
-            if (botService.get(id) == null) {
-                throw IllegalStateException("Unable to process message without bot entity")
+    fun process(id: String?, body: String?): Boolean {
+        try {
+            body?.let {
+                val update = GsonMapper.SNACK_CASE.deserialize(body, Update::class.java)
+                return handleUpdate(id, update)
+            } ?: run {
+                Log.application.error("Unable to process request without valid body")
+                return false
             }
-            val messageWrapper = MessageWrapper.builder().setMessage(update.message).setBot(id).setUpdateId(update.updateId).build()
-            messageRouterQueue.push(messageWrapper)
-            Log.application.info("Message sent to router queue")
-        } ?: run {
-            throw IllegalArgumentException("Unable to process request without valid body")
+        } catch (e: RuntimeException) {
+            Log.application.error("Unable to process request without valid body: {}", e)
+            return false
         }
+    }
+
+    private fun handleUpdate(id: String?, update: Update): Boolean {
+        if (botService.get(id) == null) {
+            Log.application.error("Unable to process message without bot entity")
+            return false
+        }
+        val messageWrapper = MessageWrapper.builder().setMessage(update.message).setBot(id).setUpdateId(update.updateId).build()
+        Log.application.info("Message sent to router queue")
+        return messageRouterQueue.push(messageWrapper) > 0
     }
 
 }

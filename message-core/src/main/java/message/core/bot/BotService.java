@@ -16,4 +16,12 @@ public class BotService {
         }
         return botRepository.get(botId);
     }
+
+    public String set(String botId, Bot bot) {
+        if (StringUtils.isBlank(botId) || bot == null) {
+            throw new IllegalArgumentException("Unable to set bot value without botId");
+        }
+        return botRepository.set(botId, bot);
+
+    }
 }
