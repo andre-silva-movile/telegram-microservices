@@ -60,6 +60,7 @@
     <orderEntry type="library" name="Gradle: org.springframework:spring-expression:4.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-core:4.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.testcontainers:spock:1.9.1" level="project" />
+    <orderEntry type="library" name="Gradle: cglib:cglib-nodep:3.2.8" level="project" />
     <orderEntry type="library" name="Gradle: org.spockframework:spock-spring:1.2-groovy-2.5" level="project" />
     <orderEntry type="library" name="Gradle: org.spockframework:spock-core:1.2-groovy-2.5" level="project" />
     <orderEntry type="library" name="Gradle: org.testcontainers:testcontainers:1.9.1" level="project" />

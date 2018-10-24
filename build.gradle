@@ -81,13 +81,13 @@ configure(subprojects.findAll()) {
     jacocoTestReport.reports.xml.enabled = true
     jacocoTestReport.reports.csv.enabled = true
     jacocoTestCoverageVerification.dependsOn jacocoTestReport
-//    test.dependsOn jibDockerBuild
     test.finalizedBy jacocoTestReport
 
     //Spock and Groovy
     apply plugin: 'groovy'
     dependencies {
         compile group: 'org.testcontainers', name: 'spock', version: '1.9.1'
+        testCompile group: 'cglib', name: 'cglib-nodep', version: '3.2.8'
         testCompile "org.codehaus.groovy:groovy-all:2.5.2"
         testCompile "org.spockframework:spock-core:1.2-groovy-2.5"
         testCompile "org.spockframework:spock-spring:1.2-groovy-2.5"

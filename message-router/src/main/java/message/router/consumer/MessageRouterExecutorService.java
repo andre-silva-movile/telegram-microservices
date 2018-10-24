@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 @Service
 public class MessageRouterExecutorService {
 
-
     private ExecutorService executorService;
 
     @Autowired

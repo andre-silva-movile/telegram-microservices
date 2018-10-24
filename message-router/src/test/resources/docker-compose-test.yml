@@ -1,0 +1,9 @@
+version: "3.5"
+services:
+
+  redis:
+    image: redis:4.0.11
+    command: ["redis-server", "--appendonly", "yes"]
+    hostname: redis
+    ports:
+    - "6379:6379"
